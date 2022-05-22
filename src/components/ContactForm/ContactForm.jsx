@@ -25,11 +25,16 @@ function ContactForm() {
       name,
       phone,
     };
-
-    contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())
-      ? alert(`${name} is already in contacts`)
-      : await createContact(newContact);
+    if (
+      contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return alert(`${name} is already in contacts`);
+    }
+    await createContact(newContact);
     alert(`${name} is added to your contacts`);
+
     formReset();
   };
 
